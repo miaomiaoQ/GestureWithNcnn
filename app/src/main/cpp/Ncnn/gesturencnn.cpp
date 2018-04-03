@@ -108,9 +108,13 @@ Java_com_example_dmrf_gesturewithncnn_JniClass_GestureNcnn_InitNcnn(JNIEnv *env,
     }
 
 
-    std::vector<std::string> param_files = {tGestureModelDir + "/gesture.param"};
+    std::vector<std::string> param_files;
+    param_files.resize(1);
+    param_files[0] = {tGestureModelDir + "/gesture.param"};
 
-    std::vector<std::string> bin_files = {tGestureModelDir + "/gesture.bin"};
+    std::vector<std::string> bin_files;
+    bin_files.resize(1);
+    bin_files[0] = {tGestureModelDir + "/gesture.bin"};
     squeezenet.load_param(param_files[0].data());
     squeezenet.load_model(bin_files[0].data());
 
