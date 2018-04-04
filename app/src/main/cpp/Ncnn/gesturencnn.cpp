@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <string>
+#include <android/log.h>
 #include <vector>
 
 using namespace std;
@@ -87,6 +88,7 @@ static int gesture_predict(float *i, float *q, float *cls_scores, int i_len) {
 
 }
 
+extern "C"
 JNIEXPORT jboolean JNICALL
 Java_com_example_dmrf_gesturewithncnn_JniClass_GestureNcnn_InitNcnn(JNIEnv *env, jobject instance,
                                                                     jstring gestureDetectionModelPath_) {
@@ -110,11 +112,11 @@ Java_com_example_dmrf_gesturewithncnn_JniClass_GestureNcnn_InitNcnn(JNIEnv *env,
 
     std::vector<std::string> param_files;
     param_files.resize(1);
-    param_files[0] = {tGestureModelDir + "/gesture.param"};
+    param_files[0] = tGestureModelDir + "/gesture.param";
 
     std::vector<std::string> bin_files;
     bin_files.resize(1);
-    bin_files[0] = {tGestureModelDir + "/gesture.bin"};
+    bin_files[0] = tGestureModelDir + "/gesture.bin";
     squeezenet.load_param(param_files[0].data());
     squeezenet.load_model(bin_files[0].data());
 
@@ -123,6 +125,7 @@ Java_com_example_dmrf_gesturewithncnn_JniClass_GestureNcnn_InitNcnn(JNIEnv *env,
     return true;
 }
 
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_dmrf_gesturewithncnn_JniClass_GestureNcnn_Detect(JNIEnv *env,
                                                                   jobject /* this */,

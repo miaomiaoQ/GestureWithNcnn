@@ -13,6 +13,7 @@ import com.example.dmrf.gesturewithncnn.R;
 public class MainActivity extends Activity {
 
     private TextView textView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -20,8 +21,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         textView=findViewById(R.id.sample_text);
         textView.setText("hello");
-        GestureNcnn gestureNcnn=new GestureNcnn();
-        SignalProcess signalProcess=new SignalProcess();
+
 
     }
 }

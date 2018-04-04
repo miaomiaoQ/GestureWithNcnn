@@ -12,10 +12,13 @@ android {
         ndk {
             abiFilters 'armeabi-v7a'
             stl "gnustl_static"
+
+
         }
         externalNativeBuild {
             cmake {
                 cppFlags ""
+
             }
         }
     }
